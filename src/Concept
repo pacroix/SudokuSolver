@@ -1,0 +1,26 @@
+1. Prüfe jedes Kästchen, ob nur eine Zahl reinpasst
+  a. Wenn nur eine Zahl reinpasst trage diese ein und starte von vorne
+  b. Wenn mehrere Zahlen reinpassen, gehe zum nächsten Kästchen
+  c. Wenn es kein Kästchen mehr gibt gehe zu Schritt 2 über
+
+2. Prüfe jede Reihe, ob eine Zahl nur an eine Stelle passt
+  a.  Wenn eine Zahl nur an eine Stelle passt, gehe zu Schritt 1
+  b.  Wenn keine Zahl eindeutig an nur eine Stelle passt gehe zum nächsten Schritt
+
+3. Prüfe jede Spalte, ob eine Zahl nur an eine Stelle passt
+  a.  Wenn eine Zahl nur an eine Stelle passt, gehe zu Schritt 1
+  b.  Wenn keine Zahl eindeutig an nur eine Stelle passt gehe zum nächsten Schritt
+
+4. Prüfe jedes Feld, ob eine Zahl nur an eine Stelle passt
+  a.  Wenn eine Zahl nur an eine Stelle passt, gehe zu Schritt 1
+  b.  Wenn keine Zahl eindeutig an nur eine Stelle passt gehe zum nächsten Schritt
+
+  0,1,2,3,4,5,6,7,8
+
+0  0, 1, 2, 3, 4, 5, 6, 7, 8
+1  9,10,11,12,13,14,15,16,17
+2 18,19,20,21,22,23,24,25,26
+
+  0,8
+ 9,17
+18,25
