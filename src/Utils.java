@@ -53,4 +53,14 @@ class Utils {
 	static int[] sToIntArr(String input, String split){
 		return Arrays.stream(input.toString().split(split)).mapToInt(Integer::parseInt).toArray();
 	}
+
+	static Board copyBoard(Board board){
+		int[][] ret = new int[9][9];
+		for (int i = 0; i < 9; i++){
+			for (int j = 0; j < 9; j++){
+				ret[i][j] = board.getCell(i,j);
+			}
+		}
+		return new Board(ret);
+	}
 }

@@ -9,6 +9,16 @@ class Solver {
         //TODO Rekursiv zu Ende loesen
     }
 
+	private static boolean isSolved(Board board){
+		return board.countEmptyCells() == 0;
+	}
+
+
+	private static Board solveRecursive(Board board){
+    	Board sudoku = Utils.copyBoard(board);
+    	return sudoku;
+	}
+
 	/**
 	 * Tries to solve one number with the steps in the concept.txt
 	 * @return True, when one number has been solved
@@ -267,8 +277,6 @@ class Solver {
         arr = board.getField(row, column);
 	    return !iterateArr(arr, number);
     }
-
-
 
 	/**
 	 * Iterates an array and returns true, when the given number is present
