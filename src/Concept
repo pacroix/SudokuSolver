@@ -15,8 +15,12 @@
   a.  Wenn eine Zahl nur an eine Stelle passt, gehe zu Schritt 1
   b.  Wenn keine Zahl eindeutig an nur eine Stelle passt gehe zum nächsten Schritt
 
-  0,1,2,3,4,5,6,7,8
 
-0  0, 1, 2, 3, 4, 5, 6, 7, 8
-1  9,10,11,12,13,14,15,16,17
-2 18,19,20,21,22,23,24,25,26
+
+Rekursiv lösen:
+1. Nehme nächstes freies Feld
+2. Prüfe welche Nummern möglich sind
+3. Gebe Board mit der nächsten möglichen Nummer zurück
+    a. Gehe zu Schritt 1.
+    b. Wenn zurückgegebenes Board null ist gehe zu Schritt 3
+    c. Wenn es keine nächste Mögliche Nummer gibt gebe null zurück
