@@ -115,6 +115,14 @@ class Solver {
     	return true;
     }
 
+	/**
+	 * Tries to insert a number between 1 and 9 into a row, column or field with the given index
+	 * @param board
+	 * @param number Int between 1 and 9 to check
+	 * @param type char (r|c|f)
+	 * @param index Row, Column, Field Index
+	 * @return True when number has been inserted, else false
+	 */
     private static boolean hasSingleLocation(Board board, int number, char type, int index){
 	    int[] emptyIndexes;
 	    int arrIndex = -1;
