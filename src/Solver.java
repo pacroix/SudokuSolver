@@ -1,4 +1,4 @@
-class Solver {
+public class Solver {
 	private static boolean debug = false;
 
     static void solve(Board board){
@@ -10,7 +10,7 @@ class Solver {
     }
 
 
-	private static int isSolved(Board board){
+	public static int isSolved(Board board){
 		if (board.countEmptyCells() == 0) {
 			if(isValid(board)){
 				return 1;   //Solved and valid
@@ -22,7 +22,7 @@ class Solver {
 		}
 	}
 
-	public static boolean isValid(Board board){
+	private static boolean isValid(Board board){
 		for (int i = 0; i < 9; i++){
 			if (Utils.getDuplicates(board.getRow(i)) != null){
 				return false;

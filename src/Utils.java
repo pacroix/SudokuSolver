@@ -1,6 +1,6 @@
 import java.util.Arrays;
 
-class Utils {
+public class Utils {
 	static int[] getMissingNumbers(int[] arr){
 		StringBuilder mssNrs = null;
 		for (int i = 1; i <= arr.length; i++){

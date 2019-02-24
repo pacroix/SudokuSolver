@@ -35,6 +35,5 @@ public class Main {
 		Board sudoku = Board.fromString(str);
 		sudoku.solve();
 		System.out.println(sudoku);
-
     }
 }

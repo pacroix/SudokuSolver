@@ -68,10 +68,10 @@ public class Board {
     }
 
     /**
-     * Returns an int Array of the given field. Numeration:
-     * 0 1 2
-     * 3 4 5
-     * 6 7 8
+     * Returns an int Array of the given field. Numeration:<br>
+     * 0 1 2<br>
+     * 3 4 5<br>
+     * 6 7 8<br>
      * The return Array has the same format.
      * @param field Int of the field to return
      * @return Int array if 0 <= field <= 9, else null
