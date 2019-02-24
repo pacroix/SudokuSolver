@@ -25,15 +25,15 @@ public class Main {
 	    board2[7] = new int[]{3,0,7,0,0,0,2,0,5};
 	    board2[8] = new int[]{0,0,0,0,0,4,0,0,0};
 
-	    /*Board sudoku = new Board(board);
+	    Board sudoku = new Board(board2);
 	    System.out.println(sudoku);
 	    Solver.solve(sudoku);
-	    System.out.println(sudoku);*/
+	    System.out.println(sudoku);
 
 
-		String str = "017060002590000000024301576400102060000030000030604005178409650000000021600010840";
+		/*String str = "017060002590000000024301576400102060000030000030604005178409650000000021600010840";
 		Board sudoku = Board.fromString(str);
 		sudoku.solve();
-		System.out.println(sudoku);
+		System.out.println(sudoku);*/
     }
 }

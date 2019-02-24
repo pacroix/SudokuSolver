@@ -7,6 +7,9 @@ public class Solver {
         	run = solveStepwise(board);
 	    }
         //TODO Rekursiv zu Ende loesen
+	    if (isSolved(board) == -1) {
+		    board = solveRecursiveStart(board);
+	    }
     }
 
 
@@ -31,9 +34,53 @@ public class Solver {
 		return true;
 	}
 
-	private static Board solveRecursive(Board board){
+	private static Board solveRecursiveStart(Board board){
     	Board sudoku = Utils.copyBoard(board);
     	return sudoku;
+	}
+
+	private static Board solveRecursive(Board board){
+    	int state = isSolved(board);
+    	if (state == 1) return board;   //Board is solved and valid
+    	if (state == 0) return null;    //Board is solved but unvalid (Don't know when this case hits right now)
+    	else {    //Board is unsolved
+    		//Strategy: Get next missing cell. Get possible numbers. Set the first number in. Call this method with an copy of the board.
+		    int x = -1;
+		    int y = -1;
+		    for (int i = 0; i < 9; i++){
+		    	for (int j = 0; i < 9; i++){
+		    		if (board.getCell(i,j) == 0) {
+		    			x = i;
+		    			y = j;
+		    			break;
+				    }
+			    }
+		    	if (x != -1) {
+		    		break;
+			    }
+		    }
+		    //Empty cell is (x,y)
+		    StringBuilder missNmbrsStr = new StringBuilder();
+		    for (int i = 1; i <= 9; i++){
+		    	if (testNumber(board, x, y, i)){
+		    		missNmbrsStr.append("," + i);
+			    }
+		    }
+		    int[] missingNumbers = Utils.sToIntArr(missNmbrsStr.substring(1), ",");
+		    Board board2 = Utils.copyBoard(board);
+		    Board ret = null;
+		    if (missingNumbers == null) {
+		    	throw new IllegalStateException(); //There must be missing numbers in this step.
+		    }
+		    for (int i : missingNumbers){
+		    	board2.set(i, x, y);
+		    	ret = solveRecursive(board2);
+		    	if(ret != null){
+		    		break;
+		    	}
+		    }
+		    return ret;
+	    }
 	}
 
 	/**
