@@ -9,10 +9,27 @@ class Solver {
         //TODO Rekursiv zu Ende loesen
     }
 
-	private static boolean isSolved(Board board){
-		return board.countEmptyCells() == 0;
+
+	private static int isSolved(Board board){
+		if (board.countEmptyCells() == 0) {
+			if(isValid(board)){
+				return 1;   //Solved and valid
+			} else {
+				return 0;   //Solved but unvalid
+			}
+		} else {
+			return -1;  //Unsolved
+		}
 	}
 
+	public static boolean isValid(Board board){
+		for (int i = 0; i < 9; i++){
+			if (Utils.getDuplicates(board.getRow(i)) != null){
+				return false;
+			}
+		}
+		return true;
+	}
 
 	private static Board solveRecursive(Board board){
     	Board sudoku = Utils.copyBoard(board);

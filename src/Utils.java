@@ -51,7 +51,8 @@ class Utils {
 	}
 
 	static int[] sToIntArr(String input, String split){
-		return Arrays.stream(input.toString().split(split)).mapToInt(Integer::parseInt).toArray();
+		if (input.equals("")) return null;
+		return Arrays.stream(input.split(split)).mapToInt(Integer::parseInt).toArray();
 	}
 
 	static Board copyBoard(Board board){
@@ -62,5 +63,20 @@ class Utils {
 			}
 		}
 		return new Board(ret);
+	}
+
+	static int[] getDuplicates(int[] arr){
+		int[] comp = new int[arr.length];
+		StringBuilder retString = new StringBuilder();
+		for (int i = 0; i < arr.length; i++){
+			for(int j : comp){
+				if(j == arr[i]){
+					retString.append("," + arr[i]);
+				}
+			}
+			comp[i] = arr[i];
+		}
+		if (retString.length() == 0) return null;
+		return sToIntArr(retString.substring(1), ",");
 	}
 }
