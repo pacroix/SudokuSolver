@@ -19,7 +19,7 @@ public class Board {
      * @param input String, Format:
      *              "1,2,3,4,5,..."
      *              "12345..."
-     * @return
+     * @return Two dimensional Array as Board
      */
     public static Board fromString(String input){
         char limiter = input.charAt(1);
@@ -31,6 +31,7 @@ public class Board {
         }
         int[][] board = new int[9][9];
         for (int i = 0; i < 9; i++){
+            assert arr != null;
             board[i] = Arrays.copyOfRange(arr, i*9, i*9+9);
         }
 
@@ -51,15 +52,15 @@ public class Board {
         return ret.toString();
     }
 
-    public int getCell(int row, int column){
+    int getCell(int row, int column){
         return board[row][column];
     }
 
-    public int[] getRow(int row){
+    int[] getRow(int row){
         return board[row];
     }
 
-    public int[] getColumn(int column){
+    int[] getColumn(int column){
         int[] ret = new int[9];
         for(int i = 0; i < 9; i++){
             ret[i] = board[i][column];
@@ -89,8 +90,8 @@ public class Board {
     7| 6 6 6 7 7 7 8 8 8
     8| 6 6 6 7 7 7 8 8 8
      */
-    public int[] getField(int field){
-        if(field >= 0 && field <= 9) {
+    int[] getField(int field){
+        if(field >= 0 && field <= 8) {
             int[] ret = new int[9];
             for (int i = 0; i < 9; i++) {
                 ret[i] = board[((field/3)*3) + (i / 3)][((field % 3) * 3) + (i % 3)];
@@ -100,7 +101,7 @@ public class Board {
         return null;
     }
 
-    public int[] getField(int row, int column){
+    int[] getField(int row, int column){
         int field = 3*(row/3) + (column/3);
         return getField(field);
     }
@@ -109,7 +110,7 @@ public class Board {
      * Counts empty cells
      * @return Amount of empty cells
      */
-    public int countEmptyCells(){
+    int countEmptyCells(){
         int emptyCells = 0;
         for(int i = 0; i < 9; i++){
             for(int c : getRow(i)){
@@ -125,7 +126,7 @@ public class Board {
      * @param row Row
      * @param column Column
      */
-    public void set(int n, int row, int column){
+    void set(int n, int row, int column){
         this.board[row][column] = n;
     }
 

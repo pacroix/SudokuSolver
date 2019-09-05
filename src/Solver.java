@@ -13,7 +13,7 @@ public class Solver {
     }
 
 
-	public static int isSolved(Board board){
+	private static int isSolved(Board board){
 		if (board.countEmptyCells() == 0) {
 			if(isValid(board)){
 				return 1;   //Solved and valid
@@ -35,8 +35,7 @@ public class Solver {
 	}
 
 	private static Board solveRecursiveStart(Board board){
-    	Board sudoku = Utils.copyBoard(board);
-    	return sudoku;
+		return Utils.copyBoard(board);
 	}
 
 	private static Board solveRecursive(Board board){
@@ -44,7 +43,7 @@ public class Solver {
     	if (state == 1) return board;   //Board is solved and valid
     	if (state == 0) return null;    //Board is solved but unvalid (Don't know when this case hits right now)
     	else {    //Board is unsolved
-    		//Strategy: Get next missing cell. Get possible numbers. Set the first number in. Call this method with an copy of the board.
+    		//Strategy: Get next missing cell. Get possible numbers. Set the first number in. Call this method with a copy of the board.
 		    int x = -1;
 		    int y = -1;
 		    for (int i = 0; i < 9; i++){
@@ -63,7 +62,7 @@ public class Solver {
 		    StringBuilder missNmbrsStr = new StringBuilder();
 		    for (int i = 1; i <= 9; i++){
 		    	if (testNumber(board, x, y, i)){
-		    		missNmbrsStr.append("," + i);
+		    		missNmbrsStr.append(",").append(i);
 			    }
 		    }
 		    int[] missingNumbers = Utils.sToIntArr(missNmbrsStr.substring(1), ",");
@@ -181,7 +180,7 @@ public class Solver {
 
 	/**
 	 * Tries to insert a number between 1 and 9 into a row, column or field with the given index
-	 * @param board
+	 * @param board Board
 	 * @param number Int between 1 and 9 to check
 	 * @param type char (r|c|f)
 	 * @param index Row, Column, Field Index
