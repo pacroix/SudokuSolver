@@ -68,6 +68,15 @@ public class Board {
         return ret;
     }
 
+    int[] getNextMissing() {
+        for (int i = 0; i<9; i++) {
+            for (int j = 0; j < 9; j++) {
+                if (this.board[i][j] == 0) return new int[]{i,j};
+            }
+        }
+        return null;
+    }
+
     /**
      * Returns an int Array of the given field. Numeration:<br>
      * 0 1 2<br>
@@ -132,6 +141,10 @@ public class Board {
 
     public void updateBoard(int[][] board){
         this.board = board;
+    }
+
+    public void updateBoard(Board board){
+        this.board = board.board;
     }
 
     public void solve(){
