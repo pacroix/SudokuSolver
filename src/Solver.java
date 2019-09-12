@@ -1,8 +1,7 @@
 import java.util.ArrayList;
-import java.util.List;
 import java.util.Objects;
 
-public class Solver {
+class Solver {
 	private static boolean debug = false;
 
     static void solve(Board board){
@@ -37,10 +36,6 @@ public class Solver {
 		return true;
 	}
 
-	private static Board solveRecursiveStart(Board board){
-		return Utils.copyBoard(board);
-	}
-
 	private static Board solveRecursive(Board board){
     	int state = isSolved(board);
     	if (state == 1) return board;   //Board is solved and valid
@@ -51,7 +46,7 @@ public class Solver {
 		    int x = coord[0];
 		    int y = coord[1];
 		    //Empty cell is (x,y)
-			ArrayList<Integer> missNmbrs = new ArrayList<Integer>();
+			ArrayList<Integer> missNmbrs = new ArrayList<>();
 
 		    for (int i = 1; i <= 9; i++){	//Pruefe ob fuer jede Zahl ob sie in das Feld passt
 		    	if (testNumber(board, x, y, i)){
@@ -300,28 +295,6 @@ public class Solver {
 				break;
 		}
 		return true;
-    }
-
-    /**
-     * Gets an int Array with length of 9, where only one number is missing and solves it
-     * @param arr int[9] where only one number is 0
-     */
-    private static void solveSingle(int[] arr){
-        int missingNumber = 0;
-        MainLoop: for(int i = 1; i <= 9; i ++){
-            missingNumber = i;
-            for(int a : arr){
-                if(i == a){
-                    continue MainLoop;
-                }
-            }
-            break;
-        }
-        for(int i = 0; i < 9 ; i++){
-            if(arr[i] == 0){
-                arr[i] = missingNumber;
-            }
-        }
     }
 
     /**
