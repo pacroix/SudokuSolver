@@ -147,6 +147,10 @@ public class Board {
         this.board = board.board;
     }
 
+    public int[][] getBoard() {
+        return board;
+    }
+
     public void solve(){
         Solver.solve(this);
     }

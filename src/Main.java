@@ -1,7 +1,10 @@
+import javax.swing.*;
+import java.awt.*;
 
 public class Main {
 
     public static void main(String[] args){
+
 
         int[][] board = new int[9][9];
         board[0] = new int[]{2,0,5,3,0,8,4,0,9};
@@ -27,9 +30,11 @@ public class Main {
 
         Board sudoku = new Board(board2);
         System.out.println(sudoku);
+        long startTime = System.currentTimeMillis();
         Solver.solve(sudoku);
+        long endTime = System.currentTimeMillis();
         System.out.println(sudoku);
-
+        System.out.printf("\nSolving took %d ms", endTime-startTime);
 
 		/*String str = "0079000010008204300030002006900003020040706007050000140060070008706100009000059000";
 		Board sudoku = Board.fromString(str);
