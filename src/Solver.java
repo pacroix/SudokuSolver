@@ -4,6 +4,12 @@ import java.util.Objects;
 class Solver {
 	private static boolean debug = false;
 
+	/**
+	 * Gets a Board object containing the sudoku to be solved.
+	 * First it solves the board stepwise until no unique step is possible,
+	 * 	after that it solves the board recursively
+	 * @param board Board object containing the sudoku to be solved
+	 */
     static void solve(Board board){
     	boolean run = true;
         while(run){
@@ -14,19 +20,31 @@ class Solver {
 	    }
     }
 
-
+	/**
+	 * Returns an int with the status code
+	 * 1: Solved and valid
+	 * 0: Solved but invalid
+	 * -1: Unsolved
+	 * @param board Board object to be checked
+	 * @return Status code
+	 */
 	private static int isSolved(Board board){
 		if (board.countEmptyCells() == 0) {
 			if(isValid(board)){
 				return 1;   //Solved and valid
 			} else {
-				return 0;   //Solved but unvalid
+				return 0;   //Solved but invalid
 			}
 		} else {
 			return -1;  //Unsolved
 		}
 	}
 
+	/**
+	 * Tests if the Board is a valid sudoku
+	 * @param board Board object containing the sudoku
+	 * @return True, if the sudoku is valid, False else
+	 */
 	private static boolean isValid(Board board){
 		for (int i = 0; i < 9; i++){
 			if (Utils.getDuplicates(board.getRow(i)) != null){
@@ -39,7 +57,7 @@ class Solver {
 	private static Board solveRecursive(Board board){
     	int state = isSolved(board);
     	if (state == 1) return board;   //Board is solved and valid
-    	if (state == 0) return null;    //Board is solved but unvalid (Don't know when this case hits right now)
+    	if (state == 0) return null;    //Board is solved but invalid (Don't know when this case hits right now)
     	else {    //Board is unsolved
     		//Strategy: Get next missing cell. Get possible numbers. Set the first number. Call this method with a copy of the board.
 		    int[] coord = board.getNextMissing();
@@ -48,7 +66,7 @@ class Solver {
 		    //Empty cell is (x,y)
 			ArrayList<Integer> missNmbrs = new ArrayList<>();
 
-		    for (int i = 1; i <= 9; i++){	//Pruefe ob fuer jede Zahl ob sie in das Feld passt
+		    for (int i = 1; i <= 9; i++){	//Test for each number if it fits in this cell
 		    	if (testNumber(board, x, y, i)){
 		    		missNmbrs.add(i);
 			    }

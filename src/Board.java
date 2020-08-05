@@ -68,6 +68,10 @@ public class Board {
         return ret;
     }
 
+    /**
+     * Returns a tuple with the coords of the next missing number
+     * @return Int array with coords as [x,y]
+     */
     int[] getNextMissing() {
         for (int i = 0; i<9; i++) {
             for (int j = 0; j < 9; j++) {

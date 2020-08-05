@@ -22,6 +22,12 @@ public class Utils {
 		else return Arrays.stream(mssNrs.toString().split(",")).mapToInt(Integer::parseInt).toArray();
 	}
 
+	/**
+	 * Returns the positions of nbr in the given array
+	 * @param nbr Number to be checked
+	 * @param arr Array to be checked
+	 * @return Int array with the found positions
+	 */
 	static int[] getIndexes(int nbr, int[] arr) {
 		StringBuilder indexes = null;
 		for(int i = 0; i < arr.length; i++){
@@ -71,7 +77,7 @@ public class Utils {
 		for (int i = 0; i < arr.length; i++){
 			for(int j : comp){
 				if(j == arr[i]){
-					retString.append("," + arr[i]);
+					retString.append(",").append(arr[i]);
 				}
 			}
 			comp[i] = arr[i];
